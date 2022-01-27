@@ -1,19 +1,29 @@
 package draylar.crimsonmoon.registry;
 
+import java.util.Set;
+import java.util.function.Predicate;
+
 import draylar.crimsonmoon.CrimsonMoon;
 import draylar.crimsonmoon.api.Crimson;
-import draylar.crimsonmoon.api.CrimsonMoonEvents;
 import draylar.crimsonmoon.api.CrimsonMobHelper;
-import draylar.crimsonmoon.mixin.*;
+import draylar.crimsonmoon.api.CrimsonMoonEvents;
+import draylar.crimsonmoon.mixin.FollowTargetGoalAccessor;
+import draylar.crimsonmoon.mixin.GoalSelectorAccessor;
+import draylar.crimsonmoon.mixin.MobEntityAccessor;
+import draylar.crimsonmoon.mixin.ServerWorldAccessor;
+import draylar.crimsonmoon.mixin.TargetPredicateAccessor;
 import draylar.crimsonmoon.util.WorldUtils;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.FollowTargetGoal;
 import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.entity.ai.goal.PrioritizedGoal;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.ActionResult;
@@ -22,9 +32,6 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.SpawnSettings;
-
-import java.util.Set;
-import java.util.function.Predicate;
 
 public class CrimsonEventHandlers {
 

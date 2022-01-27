@@ -1,10 +1,8 @@
 package draylar.crimsonmoon.mixin;
 
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.world.LocalDifficulty;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+
+import net.minecraft.entity.mob.MobEntity;
 
 @Mixin(MobEntity.class)
 public class MobEntityMixin {

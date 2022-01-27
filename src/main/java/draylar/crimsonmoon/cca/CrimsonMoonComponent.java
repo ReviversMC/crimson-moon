@@ -1,15 +1,13 @@
 package draylar.crimsonmoon.cca;
 
-import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import draylar.crimsonmoon.CrimsonMoon;
 import draylar.crimsonmoon.CrimsonMoonClient;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
-public class CrimsonMoonComponent implements ComponentV3, AutoSyncedComponent {
+public class CrimsonMoonComponent implements AutoSyncedComponent {
 
     private static final String CRIMSON_MOON_KEY = "CrimsonMoon";
     private final World world;
