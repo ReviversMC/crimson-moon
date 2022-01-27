@@ -7,7 +7,6 @@ import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
 import draylar.crimsonmoon.cca.CrimsonMoonComponent;
 import draylar.crimsonmoon.cca.ProgressComponent;
 import draylar.crimsonmoon.config.CrimsonMoonConfig;
-import draylar.crimsonmoon.network.ServerNetworking;
 import draylar.crimsonmoon.registry.CrimsonEventHandlers;
 import draylar.omegaconfig.OmegaConfig;
 import net.fabricmc.api.ModInitializer;
@@ -37,7 +36,6 @@ public class CrimsonMoon implements ModInitializer, WorldComponentInitializer {
 
     @Override
     public void onInitialize() {
-        ServerNetworking.init();
         CrimsonEventHandlers.register();
     }
 
