@@ -1,7 +1,5 @@
 package draylar.crimsonmoon;
 
-import draylar.crimsonmoon.api.ClientAttackUtils;
-import draylar.crimsonmoon.registry.CrimsonItems;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
@@ -10,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -18,13 +15,13 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class CrimsonMoonClient implements ClientModInitializer {
 
+    private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final int END_TIME = 23031;
     private static final int FADE_START = END_TIME - 200;
     public static final Identifier BANNER_TEXTURE = CrimsonMoon.id("textures/gui/banner.png");
@@ -35,11 +32,11 @@ public class CrimsonMoonClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ShaderEffectRenderCallback.EVENT.register((v) -> {
-            if (MinecraftClient.getInstance().world != null) {
-                if (CrimsonMoon.CRIMSON_MOON_COMPONENT.get(MinecraftClient.getInstance().world).isCrimsonMoon()) {
+            if (mc.world != null) {
+                if (CrimsonMoon.CRIMSON_MOON_COMPONENT.get(mc.world).isCrimsonMoon()) {
                     double glowIntensity = Math.max(0.0, Math.min(1.0, CrimsonMoon.CONFIG.glowIntensity)); // [0, 1]
                     double remaining = 1 - glowIntensity;
-                    long timeOfDay = CrimsonMoon.getTrueDayTime(MinecraftClient.getInstance().world);
+                    long timeOfDay = CrimsonMoon.getTrueDayTime(mc.world);
 
                     if (banner) {
                         glowIntensity = glowIntensity + remaining * (1 - (bannerTicks / 200f));
@@ -55,19 +52,6 @@ public class CrimsonMoonClient implements ClientModInitializer {
 
         ClientTickEvents.START_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
-
-            if (client.options.keyAttack.isPressed()) {
-                if (client.player.getMainHandStack().getItem().equals(CrimsonItems.CARNAGE)) {
-                    client.player.swingHand(Hand.MAIN_HAND);
-
-                    // this is a horrific idea
-                    // dear standard code readers: PRETEND YOU SAW NOTHING
-                    // dear people who just had an idea: STOP RIGHT THERE
-                    if (client.player.age % 5 == 0) {
-                        ClientAttackUtils.requestAttack(client.player);
-                    }
-                }
-            }
 
             // Tick dropdown banner
             if (banner) {
@@ -95,9 +79,9 @@ public class CrimsonMoonClient implements ClientModInitializer {
                     matrices.translate(0, 100, 0);
                 }
 
-                float width = MinecraftClient.getInstance().getWindow().getScaledWidth() / 2f;
+                float width = mc.getWindow().getScaledWidth() / 2f;
 
-                MinecraftClient.getInstance().getTextureManager().bindTexture(BANNER_TEXTURE);
+                mc.getTextureManager().bindTexture(BANNER_TEXTURE);
 
                 matrices.push();
                 matrices.scale(2, 2, 2);
@@ -107,34 +91,22 @@ public class CrimsonMoonClient implements ClientModInitializer {
 
                 MutableText crimson_moon = new LiteralText("Crimson Moon").setStyle(Style.EMPTY.withBold(true));
                 MutableText text = new LiteralText("The grounds tremble...").setStyle(Style.EMPTY.withBold(true));
-                int titleWidth = MinecraftClient.getInstance().textRenderer.getWidth(crimson_moon);
-                int hintWidth = MinecraftClient.getInstance().textRenderer.getWidth(text);
-                MinecraftClient.getInstance().textRenderer.draw(matrices, crimson_moon, width - titleWidth / 2f, 10, 0x5F0713);
-                MinecraftClient.getInstance().textRenderer.draw(matrices, text, width - hintWidth / 2f, 20, 0x75160c);
+                int titleWidth = mc.textRenderer.getWidth(crimson_moon);
+                int hintWidth = mc.textRenderer.getWidth(text);
+                mc.textRenderer.draw(matrices, crimson_moon, width - titleWidth / 2f, 10, 0x5F0713);
+                mc.textRenderer.draw(matrices, text, width - hintWidth / 2f, 20, 0x75160c);
 
                 matrices.pop();
             } else {
                 bannerTicks = 0;
             }
         });
-
-        FabricModelPredicateProviderRegistry.register(CrimsonItems.BLOODTHIRSTY_BOW, new Identifier("pull"), (itemStack, clientWorld, livingEntity) -> {
-            if (livingEntity == null) {
-                return 0.0F;
-            } else {
-                return livingEntity.getActiveItem() != itemStack ? 0.0F : (float)(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft()) / 20.0F;
-            }
-        });
-
-        FabricModelPredicateProviderRegistry.register(CrimsonItems.BLOODTHIRSTY_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity) -> {
-            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getActiveItem() == itemStack ? 1.0F : 0.0F;
-        });
     }
 
     public static void triggerBanner() {
-        MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_TOAST_IN, 0.0F, 5.0F));
-        MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 0.0F, 1.0F));
-        MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_ZOMBIE_AMBIENT, 0.5F, 0.75F));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_TOAST_IN, 0.0F, 5.0F));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 0.0F, 1.0F));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_ZOMBIE_AMBIENT, 0.5F, 0.75F));
         banner = true;
         bannerTicks = 0;
     }

@@ -1,5 +1,6 @@
 package draylar.crimsonmoon.mixin;
 
+import java.io.IOException;
 import java.util.function.Supplier;
 
 import org.spongepowered.asm.mixin.Mixin;

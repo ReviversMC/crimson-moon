@@ -9,17 +9,10 @@ import draylar.crimsonmoon.cca.ProgressComponent;
 import draylar.crimsonmoon.config.CrimsonMoonConfig;
 import draylar.crimsonmoon.network.ServerNetworking;
 import draylar.crimsonmoon.registry.CrimsonEventHandlers;
-import draylar.crimsonmoon.registry.CrimsonItems;
 import draylar.omegaconfig.OmegaConfig;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.BrewingRecipeRegistry;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.WeightedPicker;
 import net.minecraft.util.math.BlockPos;
@@ -38,17 +31,14 @@ import java.util.Random;
 //    world.getTime() is world.getGameTime() in mojmap. It doesn't seem to be related to day time or the time command. guessing it's like a world age counter
 public class CrimsonMoon implements ModInitializer, WorldComponentInitializer {
 
-    public static final ItemGroup GROUP = FabricItemGroupBuilder.build(id("group"), () -> new ItemStack(CrimsonItems.CARNAGE)).setTexture("crimson.png");
     public static final ComponentKey<CrimsonMoonComponent> CRIMSON_MOON_COMPONENT = ComponentRegistryV3.INSTANCE.getOrCreate(id("crimsonmoon"), CrimsonMoonComponent.class);
     public static final ComponentKey<ProgressComponent> PROGRESS = ComponentRegistryV3.INSTANCE.getOrCreate(id("progress"), ProgressComponent.class);
     public static final CrimsonMoonConfig CONFIG = OmegaConfig.register(CrimsonMoonConfig.class);
 
     @Override
     public void onInitialize() {
-        CrimsonItems.init();
         ServerNetworking.init();
         CrimsonEventHandlers.register();
-        BrewingRecipeRegistry.ITEM_RECIPES.add(new BrewingRecipeRegistry.Recipe<>(Items.POTION, Ingredient.ofItems(CrimsonItems.SCARLET_GEM), CrimsonItems.CRIMSON_BREW));
     }
 
     public static SpawnSettings.SpawnEntry pickRandomSpawnEntry(ChunkGenerator chunkGenerator, SpawnGroup spawnGroup, Random random, BlockPos pos, StructureAccessor accessor, Biome biome) {
