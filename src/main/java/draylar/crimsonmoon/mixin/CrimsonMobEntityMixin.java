@@ -22,14 +22,14 @@ public abstract class CrimsonMobEntityMixin extends LivingEntity implements Crim
     }
 
     @Inject(
-            method = "writeCustomDataToTag",
+            method = "writeCustomDataToNbt",
             at = @At("RETURN"))
     private void onWriteData(NbtCompound tag, CallbackInfo ci) {
         tag.putBoolean("IsCrimson", cm_isCrimson);
     }
 
     @Inject(
-            method = "readCustomDataFromTag",
+            method = "readCustomDataFromNbt",
             at = @At("RETURN"))
     private void onReadData(NbtCompound tag, CallbackInfo ci) {
         cm_isCrimson = tag.getBoolean("IsCrimson");

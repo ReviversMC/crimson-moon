@@ -10,7 +10,6 @@
   "license": "MIT",
   "icon": "assets/crimsonmoon/icon.png",
   "environment": "*",
-  "accessWidener": "crimsonmoon.accesswidener",
   "entrypoints": {
     "main": [
       "draylar.crimsonmoon.CrimsonMoon"
