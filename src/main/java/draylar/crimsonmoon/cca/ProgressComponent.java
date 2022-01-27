@@ -1,7 +1,7 @@
 package draylar.crimsonmoon.cca;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 
 public class ProgressComponent implements ComponentV3 {
 
@@ -9,12 +9,12 @@ public class ProgressComponent implements ComponentV3 {
     private boolean hasVisitedNether = false;
 
     @Override
-    public void readFromNbt(CompoundTag tag) {
+    public void readFromNbt(NbtCompound tag) {
         this.hasVisitedNether = tag.getBoolean(VISITED_NETHER_KEY);
     }
 
     @Override
-    public void writeToNbt(CompoundTag tag) {
+    public void writeToNbt(NbtCompound tag) {
         tag.putBoolean(VISITED_NETHER_KEY, hasVisitedNether);
     }
 
