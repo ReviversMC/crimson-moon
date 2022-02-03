@@ -40,7 +40,7 @@ public class WorldRendererMixin {
                     ordinal = 1
             )
     )
-    private void redirectMoonTexture(int bindPosition, Identifier id) {
+    private void crimsonmoon_redirectMoonTexture(int bindPosition, Identifier id) {
         if(CrimsonMoon.CRIMSON_MOON_COMPONENT.get(world).isCrimsonMoon() && CrimsonMoon.CONFIG.customMoonTexture) {
             RenderSystem.setShaderTexture(bindPosition, CRIMSON_MOON_PHASES);
         } else {
@@ -56,7 +56,7 @@ public class WorldRendererMixin {
                     ordinal = 0
             )
     )
-    private void redirectRainTexture(int bindPosition, Identifier id) {
+    private void crimsonmoon_redirectRainTexture(int bindPosition, Identifier id) {
         if(CrimsonMoon.CRIMSON_MOON_COMPONENT.get(world).isCrimsonMoon() && CrimsonMoon.CONFIG.customRainTexture) {
             RenderSystem.setShaderTexture(bindPosition, CRIMSON_RAIN);
         } else {

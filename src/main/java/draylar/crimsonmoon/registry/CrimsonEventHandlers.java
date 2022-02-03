@@ -89,7 +89,7 @@ public class CrimsonEventHandlers {
                                         }
 
                                         if(entity instanceof MobEntity) {
-                                            ((Crimson) entity).cm_setCrimson(true);
+                                            ((Crimson) entity).crimsonmoon_setCrimson(true);
                                             ((MobEntity) entity).initialize(world, world.getLocalDifficulty(spawnPos), SpawnReason.EVENT, null, null);
                                             CrimsonMobHelper.initialize(world.getServer(), (MobEntity) entity);
 
@@ -122,7 +122,7 @@ public class CrimsonEventHandlers {
                 } else if (CrimsonMoon.getTrueDayTime(world) >= KILL_TIME_START && CrimsonMoon.getTrueDayTime(world) <= KILL_TIME_END) {
                     world.iterateEntities().forEach(entity -> {
                         if (entity instanceof MobEntity
-                                && ((Crimson) entity).cm_isCrimson())
+                                && ((Crimson) entity).crimsonmoon_isCrimson())
                         entity.kill();
                     });
                 }

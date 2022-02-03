@@ -11,7 +11,7 @@ public class MobEntityMixin {
 //            method = "initEquipment",
 //            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/LocalDifficulty;getClampedLocalDifficulty()F")
 //    )
-//    private float redirect(LocalDifficulty localDifficulty) {
+//    private float crimsonmoon_redirect(LocalDifficulty localDifficulty) {
 //        return 100;
 //    }
 }

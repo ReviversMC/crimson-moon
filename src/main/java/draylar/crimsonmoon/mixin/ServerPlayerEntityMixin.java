@@ -16,7 +16,7 @@ public class ServerPlayerEntityMixin {
     @Inject(
             method = "moveToWorld",
             at = @At("HEAD"))
-    private void onChangeWorld(ServerWorld destination, CallbackInfoReturnable<Entity> cir) {
+    private void crimsonmoon_onChangeWorld(ServerWorld destination, CallbackInfoReturnable<Entity> cir) {
         // Player is traveling to the Nether
         if(destination.getRegistryKey().equals(World.NETHER)) {
             CrimsonMoon.PROGRESS.get(destination.getServer().getWorld(World.OVERWORLD)).setHasVisitedNether(true);
