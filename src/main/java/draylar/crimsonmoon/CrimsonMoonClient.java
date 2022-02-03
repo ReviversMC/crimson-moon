@@ -1,5 +1,7 @@
 package draylar.crimsonmoon;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
@@ -81,7 +83,9 @@ public class CrimsonMoonClient implements ClientModInitializer {
 
                 float width = mc.getWindow().getScaledWidth() / 2f;
 
+                // TODO: Can the next line be deleted in 1.17+?
                 mc.getTextureManager().bindTexture(BANNER_TEXTURE);
+                RenderSystem.setShaderTexture(0, BANNER_TEXTURE);
 
                 matrices.push();
                 matrices.scale(2, 2, 2);

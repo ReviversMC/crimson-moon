@@ -13,16 +13,14 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.WeightedPicker;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 // General Notes:
@@ -40,9 +38,12 @@ public class CrimsonMoon implements ModInitializer, WorldComponentInitializer {
     }
 
     public static SpawnSettings.SpawnEntry pickRandomSpawnEntry(ChunkGenerator chunkGenerator, SpawnGroup spawnGroup, Random random, BlockPos pos, StructureAccessor accessor, Biome biome) {
-        List<SpawnSettings.SpawnEntry> list = new ArrayList<>(chunkGenerator.getEntitySpawnList(biome, accessor, spawnGroup, pos));
-        list.removeIf(spawnEntry -> spawnEntry.type.equals(EntityType.SLIME));
-        return list.isEmpty() ? null : WeightedPicker.getRandom(random, list);
+        while (true) {
+            SpawnEntry mob = chunkGenerator.getEntitySpawnList(biome, accessor, spawnGroup, pos).getOrEmpty(random).get();
+            if (!mob.type.equals(EntityType.SLIME)) {
+                return mob;
+            }
+        }
     }
 
     public static Identifier id(String name) {

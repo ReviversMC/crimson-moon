@@ -1,29 +1,15 @@
 package draylar.crimsonmoon.registry;
 
-import java.util.Set;
-import java.util.function.Predicate;
-
 import draylar.crimsonmoon.CrimsonMoon;
 import draylar.crimsonmoon.api.Crimson;
 import draylar.crimsonmoon.api.CrimsonMobHelper;
 import draylar.crimsonmoon.api.CrimsonMoonEvents;
-import draylar.crimsonmoon.mixin.FollowTargetGoalAccessor;
-import draylar.crimsonmoon.mixin.GoalSelectorAccessor;
-import draylar.crimsonmoon.mixin.MobEntityAccessor;
-import draylar.crimsonmoon.mixin.ServerWorldAccessor;
-import draylar.crimsonmoon.mixin.TargetPredicateAccessor;
 import draylar.crimsonmoon.util.WorldUtils;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.ai.goal.FollowTargetGoal;
-import net.minecraft.entity.ai.goal.GoalSelector;
-import net.minecraft.entity.ai.goal.PrioritizedGoal;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.ActionResult;
@@ -107,20 +93,21 @@ public class CrimsonEventHandlers {
                                             ((MobEntity) entity).initialize(world, world.getLocalDifficulty(spawnPos), SpawnReason.EVENT, null, null);
                                             CrimsonMobHelper.initialize(world.getServer(), (MobEntity) entity);
 
-                                            // refresh target goal distance
-                                            // because it is calced during init and this is too late
-                                            GoalSelector goalSelector = ((MobEntityAccessor) entity).getTargetSelector();
-                                            Set<PrioritizedGoal> goals = ((GoalSelectorAccessor) goalSelector).getGoals();
-                                            for (PrioritizedGoal goal : goals) {
-                                                if(goal.getGoal() instanceof FollowTargetGoal) {
-                                                    // haha yes
-                                                    FollowTargetGoal followTargetGoal = (FollowTargetGoal) goal.getGoal();
-                                                    FollowTargetGoalAccessor accessor = (FollowTargetGoalAccessor) followTargetGoal;
-                                                    TargetPredicate targetPredicate = accessor.getTargetPredicate();
-                                                    Predicate<LivingEntity> predicate = ((TargetPredicateAccessor) targetPredicate).getPredicate();
-                                                    accessor.setTargetPredicate(new TargetPredicate().setBaseMaxDistance(((MobEntity) entity).getAttributeValue(EntityAttributes.GENERIC_FOLLOW_RANGE)).setPredicate(predicate));
-                                                }
-                                            }
+                                            // --- The following code is left over from the 1.16 version.
+                                            //     It doesn't seem to be necessary now?                  ---
+                                            // // refresh target goal distance
+                                            // // because it is calculated during init and this is too late
+                                            // GoalSelector targetSelector = ((MobEntityAccessor) entity).getTargetSelector();
+                                            // Set<PrioritizedGoal> goals = targetSelector.getGoals();
+                                            // for (PrioritizedGoal goal : goals) {
+                                            //     if(goal.getGoal() instanceof ActiveTargetGoal) {
+                                            //         // haha yes
+                                            //         FollowTargetGoalAccessor followTargetGoal = (FollowTargetGoalAccessor) ((ActiveTargetGoal) goal.getGoal());
+                                            //         TargetPredicate targetPredicate = followTargetGoal.getTargetPredicate();
+                                            //         Predicate<LivingEntity> predicate = ((TargetPredicateAccessor) targetPredicate).getPredicate();
+                                            //         followTargetGoal.setTargetPredicate(new TargetPredicate().setBaseMaxDistance(((MobEntity) entity).getAttributeValue(EntityAttributes.GENERIC_FOLLOW_RANGE)).setPredicate(predicate));
+                                            //     }
+                                            // }
                                         }
 
                                         entity.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
@@ -133,14 +120,11 @@ public class CrimsonEventHandlers {
                         });
                     }
                 } else if (CrimsonMoon.getTrueDayTime(world) >= KILL_TIME_START && CrimsonMoon.getTrueDayTime(world) <= KILL_TIME_END) {
-                    ((ServerWorldAccessor) world).getEntitiesById().values()
-                            .stream()
-                            .filter(entity -> entity instanceof MobEntity)
-                            .filter(entity -> ((Crimson) entity).cm_isCrimson())
-                            .forEach(mob -> {
-                                mob.kill();
-                            });
-
+                    world.iterateEntities().forEach(entity -> {
+                        if (entity instanceof MobEntity
+                                && ((Crimson) entity).cm_isCrimson())
+                        entity.kill();
+                    });
                 }
             });
         });

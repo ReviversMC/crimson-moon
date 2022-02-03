@@ -1,18 +1,16 @@
 {
   "required": true,
   "package": "draylar.crimsonmoon.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
     "BedBlockMixin",
     "CrimsonMobEntityMixin",
     "EnderDragonFightAccessor",
     "FollowTargetGoalAccessor",
-    "GoalSelectorAccessor",
     "LivingEntityAccessor",
     "MobEntityAccessor",
     "MobEntityMixin",
     "ServerPlayerEntityMixin",
-    "ServerWorldAccessor",
     "ServerWorldMixin",
     "TargetPredicateAccessor"
   ],
