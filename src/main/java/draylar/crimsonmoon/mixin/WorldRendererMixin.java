@@ -39,7 +39,7 @@ public class WorldRendererMixin {
                     target = "Lnet/minecraft/client/texture/TextureManager;bindTexture(Lnet/minecraft/util/Identifier;)V", ordinal = 1
             )
     )
-    private void redirectMoonTexture(TextureManager textureManager, Identifier id) {
+    private void crimsonmoon_redirectMoonTexture(int bindPosition, Identifier id) {
         if(CrimsonMoon.CRIMSON_MOON_COMPONENT.get(world).isCrimsonMoon() && CrimsonMoon.CONFIG.customMoonTexture) {
             this.textureManager.bindTexture(CRIMSON_MOON_PHASES);
         } else {
@@ -54,7 +54,7 @@ public class WorldRendererMixin {
                     target = "Lnet/minecraft/client/texture/TextureManager;bindTexture(Lnet/minecraft/util/Identifier;)V", ordinal = 0
             )
     )
-    private void redirectRainTexture(TextureManager textureManager, Identifier id) {
+    private void crimsonmoon_redirectRainTexture(int bindPosition, Identifier id) {
         if(CrimsonMoon.CRIMSON_MOON_COMPONENT.get(world).isCrimsonMoon() && CrimsonMoon.CONFIG.customRainTexture) {
             this.textureManager.bindTexture(CRIMSON_RAIN);
         } else {

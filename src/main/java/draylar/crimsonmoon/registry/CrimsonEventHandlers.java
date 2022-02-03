@@ -103,7 +103,7 @@ public class CrimsonEventHandlers {
                                         }
 
                                         if(entity instanceof MobEntity) {
-                                            ((Crimson) entity).cm_setCrimson(true);
+                                            ((Crimson) entity).crimsonmoon_setCrimson(true);
                                             ((MobEntity) entity).initialize(world, world.getLocalDifficulty(spawnPos), SpawnReason.EVENT, null, null);
                                             CrimsonMobHelper.initialize(world.getServer(), (MobEntity) entity);
 
@@ -136,11 +136,10 @@ public class CrimsonEventHandlers {
                     ((ServerWorldAccessor) world).getEntitiesById().values()
                             .stream()
                             .filter(entity -> entity instanceof MobEntity)
-                            .filter(entity -> ((Crimson) entity).cm_isCrimson())
+                            .filter(entity -> ((Crimson) entity).crimsonmoon_isCrimson())
                             .forEach(mob -> {
                                 mob.kill();
                             });
-
                 }
             });
         });
