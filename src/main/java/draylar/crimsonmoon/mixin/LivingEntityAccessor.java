@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(LivingEntity.class)
 public interface LivingEntityAccessor {
     @Invoker(value = "getEyeHeight")
-    float cm_getEyeHeight(EntityPose pose, EntityDimensions dimensions);
+    float crimsonmoon_getEyeHeight(EntityPose pose, EntityDimensions dimensions);
 }

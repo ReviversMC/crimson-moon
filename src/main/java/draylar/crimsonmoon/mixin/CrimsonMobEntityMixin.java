@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 @Mixin(MobEntity.class)
 public abstract class CrimsonMobEntityMixin extends LivingEntity implements Crimson {
 
-    private boolean cm_isCrimson = false;
+    private boolean crimsonmoon_isCrimson = false;
 
     protected CrimsonMobEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
@@ -25,24 +25,24 @@ public abstract class CrimsonMobEntityMixin extends LivingEntity implements Crim
             method = "writeCustomDataToNbt",
             at = @At("RETURN"))
     private void onWriteData(NbtCompound tag, CallbackInfo ci) {
-        tag.putBoolean("IsCrimson", cm_isCrimson);
+        tag.putBoolean("IsCrimson", crimsonmoon_isCrimson);
     }
 
     @Inject(
             method = "readCustomDataFromNbt",
             at = @At("RETURN"))
     private void onReadData(NbtCompound tag, CallbackInfo ci) {
-        cm_isCrimson = tag.getBoolean("IsCrimson");
+        crimsonmoon_isCrimson = tag.getBoolean("IsCrimson");
     }
 
     @Override
-    public boolean cm_isCrimson() {
-        return cm_isCrimson;
+    public boolean crimsonmoon_isCrimson() {
+        return crimsonmoon_isCrimson;
     }
 
     @Override
-    public void cm_setCrimson(boolean crimson) {
-        cm_isCrimson = crimson;
+    public void crimsonmoon_setCrimson(boolean crimson) {
+        crimsonmoon_isCrimson = crimson;
     }
 
 }

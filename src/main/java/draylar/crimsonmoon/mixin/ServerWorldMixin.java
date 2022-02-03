@@ -29,7 +29,7 @@ public abstract class ServerWorldMixin extends World {
             method = "setTimeOfDay",
             at = @At(value = "HEAD")
     )
-    private void setTime(long timeOfDay, CallbackInfo ci) {
+    private void crimsonmoon_setTime(long timeOfDay, CallbackInfo ci) {
         ServerWorld world = (ServerWorld) (Object) this;
         long cappedDayTime = timeOfDay % 24000;
 
