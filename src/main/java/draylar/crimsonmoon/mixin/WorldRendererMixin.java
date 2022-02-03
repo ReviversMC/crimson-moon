@@ -33,7 +33,7 @@ public class WorldRendererMixin {
     @Shadow @Final private static Identifier RAIN;
 
     @Redirect(
-            method = "renderSky",
+            method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/util/Identifier;)V",
