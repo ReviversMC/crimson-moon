@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 

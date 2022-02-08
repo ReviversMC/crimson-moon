@@ -1,7 +1,8 @@
-package draylar.crimsonmoon.api;
+package com.github.reviversmc.crimsonmoon.api;
 
-import draylar.crimsonmoon.CrimsonMoon;
-import draylar.crimsonmoon.mixin.EnderDragonFightAccessor;
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
+import com.github.reviversmc.crimsonmoon.mixin.EnderDragonFightAccessor;
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;

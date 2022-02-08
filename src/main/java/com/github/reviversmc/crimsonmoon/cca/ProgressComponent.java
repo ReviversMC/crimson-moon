@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.cca;
+package com.github.reviversmc.crimsonmoon.cca;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import net.minecraft.nbt.NbtCompound;

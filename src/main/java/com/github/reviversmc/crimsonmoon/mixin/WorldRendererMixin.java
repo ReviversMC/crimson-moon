@@ -1,12 +1,12 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
-import draylar.crimsonmoon.CrimsonMoon;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;
 
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import org.spongepowered.asm.mixin.Final;

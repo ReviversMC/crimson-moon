@@ -1,14 +1,15 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
 import java.util.function.Supplier;
+
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
+import com.github.reviversmc.crimsonmoon.api.CrimsonMoonEvents;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import draylar.crimsonmoon.CrimsonMoon;
-import draylar.crimsonmoon.api.CrimsonMoonEvents;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.profiler.Profiler;

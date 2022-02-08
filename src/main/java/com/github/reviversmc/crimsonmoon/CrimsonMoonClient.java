@@ -1,4 +1,4 @@
-package draylar.crimsonmoon;
+package com.github.reviversmc.crimsonmoon;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 

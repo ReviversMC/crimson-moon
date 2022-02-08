@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.config;
+package com.github.reviversmc.crimsonmoon.config;
 
 import draylar.omegaconfig.api.Comment;
 import draylar.omegaconfig.api.Config;

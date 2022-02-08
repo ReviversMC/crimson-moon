@@ -1,13 +1,9 @@
-package draylar.crimsonmoon;
+package com.github.reviversmc.crimsonmoon;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
-import draylar.crimsonmoon.cca.CrimsonMoonComponent;
-import draylar.crimsonmoon.cca.ProgressComponent;
-import draylar.crimsonmoon.config.CrimsonMoonConfig;
-import draylar.crimsonmoon.registry.CrimsonEventHandlers;
 import draylar.omegaconfig.OmegaConfig;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.EntityType;
@@ -22,6 +18,11 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 import java.util.Random;
+
+import com.github.reviversmc.crimsonmoon.cca.CrimsonMoonComponent;
+import com.github.reviversmc.crimsonmoon.cca.ProgressComponent;
+import com.github.reviversmc.crimsonmoon.config.CrimsonMoonConfig;
+import com.github.reviversmc.crimsonmoon.registry.CrimsonEventHandlers;
 
 // General Notes:
 //    world.getTimeOfDay() is a GENERAL total-tick counter. If you add 100,000 to the time, this method will return a large number.

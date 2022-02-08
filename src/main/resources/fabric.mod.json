@@ -13,13 +13,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "draylar.crimsonmoon.CrimsonMoon"
+      "com.github.reviversmc.crimsonmoon.CrimsonMoon"
     ],
     "client": [
-      "draylar.crimsonmoon.CrimsonMoonClient"
+      "com.github.reviversmc.crimsonmoon.CrimsonMoonClient"
     ],
     "cardinal-components-world": [
-      "draylar.crimsonmoon.CrimsonMoon"
+      "com.github.reviversmc.crimsonmoon.CrimsonMoon"
     ]
   },
   "mixins": [

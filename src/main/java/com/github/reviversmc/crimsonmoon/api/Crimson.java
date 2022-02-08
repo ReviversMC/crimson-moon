@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.api;
+package com.github.reviversmc.crimsonmoon.api;
 
 public interface Crimson {
     boolean crimsonmoon_isCrimson();

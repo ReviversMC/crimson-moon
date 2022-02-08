@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.util;
+package com.github.reviversmc.crimsonmoon.util;
 
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.ChunkPos;

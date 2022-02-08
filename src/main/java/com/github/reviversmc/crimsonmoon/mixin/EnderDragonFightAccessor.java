@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
 import net.minecraft.entity.boss.dragon.EnderDragonFight;
 import net.minecraft.util.math.BlockPos;

@@ -1,6 +1,5 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
-import draylar.crimsonmoon.CrimsonMoon;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +10,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
