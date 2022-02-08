@@ -8,7 +8,7 @@
     "Draylar",
     "NebelNidas"
   ],
-  "license": "MIT",
+  "license": "LGPL-3.0-or-later",
   "icon": "assets/crimsonmoon/icon.png",
   "environment": "*",
   "entrypoints": {
