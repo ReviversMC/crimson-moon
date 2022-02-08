@@ -41,7 +41,7 @@ jobs:
 
           files-primary: build/libs/!(*-@(dev|sources)).jar
 
-          name: Crimson Moon 3.0.0
+          name: Crimson Moon 3.0.0 for 1.17
           version: 3.0.0+1.17
           version-type: beta
 
