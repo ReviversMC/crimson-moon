@@ -1,10 +1,11 @@
-package draylar.crimsonmoon.registry;
+package com.github.reviversmc.crimsonmoon.registry;
 
-import draylar.crimsonmoon.CrimsonMoon;
-import draylar.crimsonmoon.api.Crimson;
-import draylar.crimsonmoon.api.CrimsonMobHelper;
-import draylar.crimsonmoon.api.CrimsonMoonEvents;
-import draylar.crimsonmoon.util.WorldUtils;
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
+import com.github.reviversmc.crimsonmoon.api.Crimson;
+import com.github.reviversmc.crimsonmoon.api.CrimsonMobHelper;
+import com.github.reviversmc.crimsonmoon.api.CrimsonMoonEvents;
+import com.github.reviversmc.crimsonmoon.util.WorldUtils;
+
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

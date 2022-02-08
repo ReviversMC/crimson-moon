@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.mixin;
+package com.github.reviversmc.crimsonmoon.mixin;
 
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

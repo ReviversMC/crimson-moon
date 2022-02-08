@@ -1,4 +1,4 @@
-package draylar.crimsonmoon.api;
+package com.github.reviversmc.crimsonmoon.api;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;

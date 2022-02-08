@@ -1,8 +1,9 @@
-package draylar.crimsonmoon.cca;
+package com.github.reviversmc.crimsonmoon.cca;
+
+import com.github.reviversmc.crimsonmoon.CrimsonMoon;
+import com.github.reviversmc.crimsonmoon.CrimsonMoonClient;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import draylar.crimsonmoon.CrimsonMoon;
-import draylar.crimsonmoon.CrimsonMoonClient;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.world.World;

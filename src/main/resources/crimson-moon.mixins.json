@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "draylar.crimsonmoon.mixin",
+  "package": "com.github.reviversmc.crimsonmoon.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "BedBlockMixin",
