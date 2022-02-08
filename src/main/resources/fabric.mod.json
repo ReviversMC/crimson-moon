@@ -5,7 +5,8 @@
   "name": "Crimson Moon",
   "description": "Every so often... a Crimson Moon appears, accompanied by the howls of mobs across the lands.",
   "authors": [
-    "Draylar"
+    "Draylar",
+    "NebelNidas"
   ],
   "license": "LGPL-3.0-or-later",
   "icon": "assets/crimsonmoon/icon.png",
