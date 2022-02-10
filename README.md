@@ -1,5 +1,4 @@
 # Crimson Moon
-# Modget-Minecraft
 [![CurseForge downloads](https://cf.way2muchnoise.eu/crimson-moon-revived.svg)](https://www.curseforge.com/minecraft/mc-mods/crimson-moon-revived)
 [![CurseForge versions](https://cf.way2muchnoise.eu/versions/crimson-moon-revived.svg)](https://www.curseforge.com/minecraft/mc-mods/crimson-moon-revived)
 [![GitHub Downloads](https://img.shields.io/github/downloads/ReviversMC/crimson-moon/total.svg)](https://github.com/ReviversMC/crimson-moon/releases/latest)
@@ -24,7 +23,7 @@ This mod was built for Fabric. Forge ports are theoretically possible, but I won
 Crimson Moon has a number of config options which you can edit in `config/crimsonmoon.json5`. Each option has a comment that describes what it does.
 
 
-### Gallery
+## Gallery
 ![](resources/red.png)
 
 ![](resources/moon.png)
