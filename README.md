@@ -1,3 +1,5 @@
+> IMPORTANT: Draylar has updated his original mod now, so there's no reason for me to continue this fork! Please go there to receive versions compatible with new Minecraft releases.
+
 # Crimson Moon
 [![CurseForge downloads](https://cf.way2muchnoise.eu/crimson-moon-revived.svg)](https://www.curseforge.com/minecraft/mc-mods/crimson-moon-revived)
 [![CurseForge versions](https://cf.way2muchnoise.eu/versions/crimson-moon-revived.svg)](https://www.curseforge.com/minecraft/mc-mods/crimson-moon-revived)
